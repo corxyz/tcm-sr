@@ -5,7 +5,7 @@ from numpy.random import randint
 from numpy.matlib import repmat
 from numpy import nanmean
 from matplotlib.gridspec import GridSpec
-import bias_var, pachinko_sim, pstopSim
+import bias_var, pachinko_sim, pstop_sim
 
 ########################################
 #  CONSTANTS & HYPERPARAMETERS
@@ -201,7 +201,7 @@ def plot_val_est_learned_sr(n_samp, vtrues, vsamps, beta, gammas=[], rew_mod_alp
   ymax = 0
   for i, gamma in enumerate(gammas):
     vsamp, vtrue = vsamps[i], vtrues[i]
-    mean, pctl, bias = pstopSim.get_val_est_pctl(vsamp, vtrue, beta)
+    mean, pctl, bias = pstop_sim.get_val_est_pctl(vsamp, vtrue, beta)
     for j, nsamp in enumerate([10, 100, 1000]):
       if n_samp >= nsamp:
         ax = fig.add_subplot(gs[0,i*3+j])

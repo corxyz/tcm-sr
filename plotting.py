@@ -6,7 +6,7 @@ from numpy.random import rand
 from numpy.matlib import repmat
 from numpy import nanmean, nansum
 from matplotlib.gridspec import GridSpec
-import pachinko_sim, bias_var, pstopSim
+import pachinko_sim, bias_var, pstop_sim
 
 ########################################
 #  CONSTANT
@@ -426,7 +426,7 @@ def plot_val_est_noniid(n_samp, n_trial, vtruesList, vsampsList,
     for i, egamma in enumerate(eGammas[k]):
       vsamp, vtrue = vsamps[i], vtrues[i]
       vsamp[vsamp == 0] = np.nan
-      mean, pctl, bias = pstopSim.get_val_est_pctl(vsamp, vtrue, beta)
+      mean, pctl, bias = pstop_sim.get_val_est_pctl(vsamp, vtrue, beta)
       # plot bias density plots
       for j, n in enumerate([10, 100, 1000]):
         if beta != 0 and n_trial*n_samp >= n or beta == 0 and n_samp >= n:

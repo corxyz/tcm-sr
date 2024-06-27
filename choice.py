@@ -3,7 +3,7 @@ import numpy as np
 import pylab as plt
 from numpy.matlib import repmat
 from numpy import cumsum, nanmean, nansum
-import util, pachinko_sim, bias_var, pstopSim
+import util, pachinko_sim, bias_var, pstop_sim
 
 ########################################
 #  CONSTANTS & HYPERPARAMETERS
@@ -81,7 +81,7 @@ def run_sim(n_trial, n_samp, n_row, n_col, n_rew, maze, s, T, M, gamma, pstop=No
   else:
     eGamma = pstop * gamma + (1-pstop)   # effective gamma
     M_effect = util.get_sr(T, gamma=eGamma, extra_trans_on_sr=extra_trans_on_sr)
-    samped, vsamp, _, vtrue = pstopSim.run_sim(n_rep, n_trial, n_row, n_col, n_rew, s, M, M_effect, pstop, userandom=False, maze=maze, 
+    samped, vsamp, _, vtrue = pstop_sim.run_sim(n_rep, n_trial, n_row, n_col, n_rew, s, M, M_effect, pstop, userandom=False, maze=maze, 
                                           MFC=MFC, max_samp=max_samp, rho=rho, beta=beta)
   return vtrue, vsamp, samped
 
